@@ -1,0 +1,6 @@
+2
+A(John)
+B(John)
+2
+(     A(x)   =    >     B(x))
+(B(x)=>A(x))

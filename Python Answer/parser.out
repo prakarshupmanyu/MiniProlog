@@ -1,0 +1,704 @@
+Created by PLY version 3.9 (http://www.dabeaz.com/ply)
+
+Grammar
+
+Rule 0     S' -> sentence
+Rule 1     sentence -> PREDICATE
+Rule 2     sentence -> LPAREN NOT PREDICATE RPAREN
+Rule 3     sentence -> LPAREN sentence IMPLIES sentence RPAREN
+Rule 4     sentence -> LPAREN NOT LPAREN sentence RPAREN RPAREN
+Rule 5     sentence -> LPAREN NOT LPAREN sentence CONJUNCTION sentence RPAREN RPAREN
+Rule 6     sentence -> LPAREN NOT LPAREN sentence DISJUNCTION sentence RPAREN RPAREN
+Rule 7     sentence -> LPAREN NOT LPAREN NOT sentence RPAREN RPAREN
+Rule 8     sentence -> LPAREN LPAREN sentence CONJUNCTION sentence RPAREN DISJUNCTION sentence RPAREN
+Rule 9     sentence -> LPAREN sentence DISJUNCTION LPAREN sentence CONJUNCTION sentence RPAREN RPAREN
+Rule 10    sentence -> LPAREN sentence RPAREN
+Rule 11    sentence -> LPAREN sentence CONJUNCTION sentence RPAREN
+Rule 12    sentence -> LPAREN sentence DISJUNCTION sentence RPAREN
+
+Terminals, with rules where they appear
+
+CONJUNCTION          : 5 8 9 11
+DISJUNCTION          : 6 8 9 12
+IMPLIES              : 3
+LPAREN               : 2 3 4 4 5 5 6 6 7 7 8 8 9 9 10 11 12
+NOT                  : 2 4 5 6 7 7
+PREDICATE            : 1 2
+RPAREN               : 2 3 4 4 5 5 6 6 7 7 8 8 9 9 10 11 12
+error                : 
+
+Nonterminals, with rules where they appear
+
+sentence             : 3 3 4 5 5 6 6 7 8 8 8 9 9 9 10 11 11 12 12 0
+
+Parsing method: LALR
+
+state 0
+
+    (0) S' -> . sentence
+    (1) sentence -> . PREDICATE
+    (2) sentence -> . LPAREN NOT PREDICATE RPAREN
+    (3) sentence -> . LPAREN sentence IMPLIES sentence RPAREN
+    (4) sentence -> . LPAREN NOT LPAREN sentence RPAREN RPAREN
+    (5) sentence -> . LPAREN NOT LPAREN sentence CONJUNCTION sentence RPAREN RPAREN
+    (6) sentence -> . LPAREN NOT LPAREN sentence DISJUNCTION sentence RPAREN RPAREN
+    (7) sentence -> . LPAREN NOT LPAREN NOT sentence RPAREN RPAREN
+    (8) sentence -> . LPAREN LPAREN sentence CONJUNCTION sentence RPAREN DISJUNCTION sentence RPAREN
+    (9) sentence -> . LPAREN sentence DISJUNCTION LPAREN sentence CONJUNCTION sentence RPAREN RPAREN
+    (10) sentence -> . LPAREN sentence RPAREN
+    (11) sentence -> . LPAREN sentence CONJUNCTION sentence RPAREN
+    (12) sentence -> . LPAREN sentence DISJUNCTION sentence RPAREN
+
+    PREDICATE       shift and go to state 1
+    LPAREN          shift and go to state 3
+
+    sentence                       shift and go to state 2
+
+state 1
+
+    (1) sentence -> PREDICATE .
+
+    RPAREN          reduce using rule 1 (sentence -> PREDICATE .)
+    CONJUNCTION     reduce using rule 1 (sentence -> PREDICATE .)
+    IMPLIES         reduce using rule 1 (sentence -> PREDICATE .)
+    DISJUNCTION     reduce using rule 1 (sentence -> PREDICATE .)
+    $end            reduce using rule 1 (sentence -> PREDICATE .)
+
+
+state 2
+
+    (0) S' -> sentence .
+
+
+
+state 3
+
+    (2) sentence -> LPAREN . NOT PREDICATE RPAREN
+    (3) sentence -> LPAREN . sentence IMPLIES sentence RPAREN
+    (4) sentence -> LPAREN . NOT LPAREN sentence RPAREN RPAREN
+    (5) sentence -> LPAREN . NOT LPAREN sentence CONJUNCTION sentence RPAREN RPAREN
+    (6) sentence -> LPAREN . NOT LPAREN sentence DISJUNCTION sentence RPAREN RPAREN
+    (7) sentence -> LPAREN . NOT LPAREN NOT sentence RPAREN RPAREN
+    (8) sentence -> LPAREN . LPAREN sentence CONJUNCTION sentence RPAREN DISJUNCTION sentence RPAREN
+    (9) sentence -> LPAREN . sentence DISJUNCTION LPAREN sentence CONJUNCTION sentence RPAREN RPAREN
+    (10) sentence -> LPAREN . sentence RPAREN
+    (11) sentence -> LPAREN . sentence CONJUNCTION sentence RPAREN
+    (12) sentence -> LPAREN . sentence DISJUNCTION sentence RPAREN
+    (1) sentence -> . PREDICATE
+    (2) sentence -> . LPAREN NOT PREDICATE RPAREN
+    (3) sentence -> . LPAREN sentence IMPLIES sentence RPAREN
+    (4) sentence -> . LPAREN NOT LPAREN sentence RPAREN RPAREN
+    (5) sentence -> . LPAREN NOT LPAREN sentence CONJUNCTION sentence RPAREN RPAREN
+    (6) sentence -> . LPAREN NOT LPAREN sentence DISJUNCTION sentence RPAREN RPAREN
+    (7) sentence -> . LPAREN NOT LPAREN NOT sentence RPAREN RPAREN
+    (8) sentence -> . LPAREN LPAREN sentence CONJUNCTION sentence RPAREN DISJUNCTION sentence RPAREN
+    (9) sentence -> . LPAREN sentence DISJUNCTION LPAREN sentence CONJUNCTION sentence RPAREN RPAREN
+    (10) sentence -> . LPAREN sentence RPAREN
+    (11) sentence -> . LPAREN sentence CONJUNCTION sentence RPAREN
+    (12) sentence -> . LPAREN sentence DISJUNCTION sentence RPAREN
+
+    NOT             shift and go to state 6
+    LPAREN          shift and go to state 5
+    PREDICATE       shift and go to state 1
+
+    sentence                       shift and go to state 4
+
+state 4
+
+    (3) sentence -> LPAREN sentence . IMPLIES sentence RPAREN
+    (9) sentence -> LPAREN sentence . DISJUNCTION LPAREN sentence CONJUNCTION sentence RPAREN RPAREN
+    (10) sentence -> LPAREN sentence . RPAREN
+    (11) sentence -> LPAREN sentence . CONJUNCTION sentence RPAREN
+    (12) sentence -> LPAREN sentence . DISJUNCTION sentence RPAREN
+
+    IMPLIES         shift and go to state 9
+    DISJUNCTION     shift and go to state 7
+    RPAREN          shift and go to state 8
+    CONJUNCTION     shift and go to state 10
+
+
+state 5
+
+    (8) sentence -> LPAREN LPAREN . sentence CONJUNCTION sentence RPAREN DISJUNCTION sentence RPAREN
+    (2) sentence -> LPAREN . NOT PREDICATE RPAREN
+    (3) sentence -> LPAREN . sentence IMPLIES sentence RPAREN
+    (4) sentence -> LPAREN . NOT LPAREN sentence RPAREN RPAREN
+    (5) sentence -> LPAREN . NOT LPAREN sentence CONJUNCTION sentence RPAREN RPAREN
+    (6) sentence -> LPAREN . NOT LPAREN sentence DISJUNCTION sentence RPAREN RPAREN
+    (7) sentence -> LPAREN . NOT LPAREN NOT sentence RPAREN RPAREN
+    (8) sentence -> LPAREN . LPAREN sentence CONJUNCTION sentence RPAREN DISJUNCTION sentence RPAREN
+    (9) sentence -> LPAREN . sentence DISJUNCTION LPAREN sentence CONJUNCTION sentence RPAREN RPAREN
+    (10) sentence -> LPAREN . sentence RPAREN
+    (11) sentence -> LPAREN . sentence CONJUNCTION sentence RPAREN
+    (12) sentence -> LPAREN . sentence DISJUNCTION sentence RPAREN
+    (1) sentence -> . PREDICATE
+    (2) sentence -> . LPAREN NOT PREDICATE RPAREN
+    (3) sentence -> . LPAREN sentence IMPLIES sentence RPAREN
+    (4) sentence -> . LPAREN NOT LPAREN sentence RPAREN RPAREN
+    (5) sentence -> . LPAREN NOT LPAREN sentence CONJUNCTION sentence RPAREN RPAREN
+    (6) sentence -> . LPAREN NOT LPAREN sentence DISJUNCTION sentence RPAREN RPAREN
+    (7) sentence -> . LPAREN NOT LPAREN NOT sentence RPAREN RPAREN
+    (8) sentence -> . LPAREN LPAREN sentence CONJUNCTION sentence RPAREN DISJUNCTION sentence RPAREN
+    (9) sentence -> . LPAREN sentence DISJUNCTION LPAREN sentence CONJUNCTION sentence RPAREN RPAREN
+    (10) sentence -> . LPAREN sentence RPAREN
+    (11) sentence -> . LPAREN sentence CONJUNCTION sentence RPAREN
+    (12) sentence -> . LPAREN sentence DISJUNCTION sentence RPAREN
+
+    NOT             shift and go to state 6
+    LPAREN          shift and go to state 5
+    PREDICATE       shift and go to state 1
+
+    sentence                       shift and go to state 11
+
+state 6
+
+    (2) sentence -> LPAREN NOT . PREDICATE RPAREN
+    (4) sentence -> LPAREN NOT . LPAREN sentence RPAREN RPAREN
+    (5) sentence -> LPAREN NOT . LPAREN sentence CONJUNCTION sentence RPAREN RPAREN
+    (6) sentence -> LPAREN NOT . LPAREN sentence DISJUNCTION sentence RPAREN RPAREN
+    (7) sentence -> LPAREN NOT . LPAREN NOT sentence RPAREN RPAREN
+
+    PREDICATE       shift and go to state 12
+    LPAREN          shift and go to state 13
+
+
+state 7
+
+    (9) sentence -> LPAREN sentence DISJUNCTION . LPAREN sentence CONJUNCTION sentence RPAREN RPAREN
+    (12) sentence -> LPAREN sentence DISJUNCTION . sentence RPAREN
+    (1) sentence -> . PREDICATE
+    (2) sentence -> . LPAREN NOT PREDICATE RPAREN
+    (3) sentence -> . LPAREN sentence IMPLIES sentence RPAREN
+    (4) sentence -> . LPAREN NOT LPAREN sentence RPAREN RPAREN
+    (5) sentence -> . LPAREN NOT LPAREN sentence CONJUNCTION sentence RPAREN RPAREN
+    (6) sentence -> . LPAREN NOT LPAREN sentence DISJUNCTION sentence RPAREN RPAREN
+    (7) sentence -> . LPAREN NOT LPAREN NOT sentence RPAREN RPAREN
+    (8) sentence -> . LPAREN LPAREN sentence CONJUNCTION sentence RPAREN DISJUNCTION sentence RPAREN
+    (9) sentence -> . LPAREN sentence DISJUNCTION LPAREN sentence CONJUNCTION sentence RPAREN RPAREN
+    (10) sentence -> . LPAREN sentence RPAREN
+    (11) sentence -> . LPAREN sentence CONJUNCTION sentence RPAREN
+    (12) sentence -> . LPAREN sentence DISJUNCTION sentence RPAREN
+
+    LPAREN          shift and go to state 15
+    PREDICATE       shift and go to state 1
+
+    sentence                       shift and go to state 14
+
+state 8
+
+    (10) sentence -> LPAREN sentence RPAREN .
+
+    RPAREN          reduce using rule 10 (sentence -> LPAREN sentence RPAREN .)
+    CONJUNCTION     reduce using rule 10 (sentence -> LPAREN sentence RPAREN .)
+    IMPLIES         reduce using rule 10 (sentence -> LPAREN sentence RPAREN .)
+    DISJUNCTION     reduce using rule 10 (sentence -> LPAREN sentence RPAREN .)
+    $end            reduce using rule 10 (sentence -> LPAREN sentence RPAREN .)
+
+
+state 9
+
+    (3) sentence -> LPAREN sentence IMPLIES . sentence RPAREN
+    (1) sentence -> . PREDICATE
+    (2) sentence -> . LPAREN NOT PREDICATE RPAREN
+    (3) sentence -> . LPAREN sentence IMPLIES sentence RPAREN
+    (4) sentence -> . LPAREN NOT LPAREN sentence RPAREN RPAREN
+    (5) sentence -> . LPAREN NOT LPAREN sentence CONJUNCTION sentence RPAREN RPAREN
+    (6) sentence -> . LPAREN NOT LPAREN sentence DISJUNCTION sentence RPAREN RPAREN
+    (7) sentence -> . LPAREN NOT LPAREN NOT sentence RPAREN RPAREN
+    (8) sentence -> . LPAREN LPAREN sentence CONJUNCTION sentence RPAREN DISJUNCTION sentence RPAREN
+    (9) sentence -> . LPAREN sentence DISJUNCTION LPAREN sentence CONJUNCTION sentence RPAREN RPAREN
+    (10) sentence -> . LPAREN sentence RPAREN
+    (11) sentence -> . LPAREN sentence CONJUNCTION sentence RPAREN
+    (12) sentence -> . LPAREN sentence DISJUNCTION sentence RPAREN
+
+    PREDICATE       shift and go to state 1
+    LPAREN          shift and go to state 3
+
+    sentence                       shift and go to state 16
+
+state 10
+
+    (11) sentence -> LPAREN sentence CONJUNCTION . sentence RPAREN
+    (1) sentence -> . PREDICATE
+    (2) sentence -> . LPAREN NOT PREDICATE RPAREN
+    (3) sentence -> . LPAREN sentence IMPLIES sentence RPAREN
+    (4) sentence -> . LPAREN NOT LPAREN sentence RPAREN RPAREN
+    (5) sentence -> . LPAREN NOT LPAREN sentence CONJUNCTION sentence RPAREN RPAREN
+    (6) sentence -> . LPAREN NOT LPAREN sentence DISJUNCTION sentence RPAREN RPAREN
+    (7) sentence -> . LPAREN NOT LPAREN NOT sentence RPAREN RPAREN
+    (8) sentence -> . LPAREN LPAREN sentence CONJUNCTION sentence RPAREN DISJUNCTION sentence RPAREN
+    (9) sentence -> . LPAREN sentence DISJUNCTION LPAREN sentence CONJUNCTION sentence RPAREN RPAREN
+    (10) sentence -> . LPAREN sentence RPAREN
+    (11) sentence -> . LPAREN sentence CONJUNCTION sentence RPAREN
+    (12) sentence -> . LPAREN sentence DISJUNCTION sentence RPAREN
+
+    PREDICATE       shift and go to state 1
+    LPAREN          shift and go to state 3
+
+    sentence                       shift and go to state 17
+
+state 11
+
+    (8) sentence -> LPAREN LPAREN sentence . CONJUNCTION sentence RPAREN DISJUNCTION sentence RPAREN
+    (3) sentence -> LPAREN sentence . IMPLIES sentence RPAREN
+    (9) sentence -> LPAREN sentence . DISJUNCTION LPAREN sentence CONJUNCTION sentence RPAREN RPAREN
+    (10) sentence -> LPAREN sentence . RPAREN
+    (11) sentence -> LPAREN sentence . CONJUNCTION sentence RPAREN
+    (12) sentence -> LPAREN sentence . DISJUNCTION sentence RPAREN
+
+    CONJUNCTION     shift and go to state 18
+    IMPLIES         shift and go to state 9
+    DISJUNCTION     shift and go to state 7
+    RPAREN          shift and go to state 8
+
+
+state 12
+
+    (2) sentence -> LPAREN NOT PREDICATE . RPAREN
+
+    RPAREN          shift and go to state 19
+
+
+state 13
+
+    (4) sentence -> LPAREN NOT LPAREN . sentence RPAREN RPAREN
+    (5) sentence -> LPAREN NOT LPAREN . sentence CONJUNCTION sentence RPAREN RPAREN
+    (6) sentence -> LPAREN NOT LPAREN . sentence DISJUNCTION sentence RPAREN RPAREN
+    (7) sentence -> LPAREN NOT LPAREN . NOT sentence RPAREN RPAREN
+    (1) sentence -> . PREDICATE
+    (2) sentence -> . LPAREN NOT PREDICATE RPAREN
+    (3) sentence -> . LPAREN sentence IMPLIES sentence RPAREN
+    (4) sentence -> . LPAREN NOT LPAREN sentence RPAREN RPAREN
+    (5) sentence -> . LPAREN NOT LPAREN sentence CONJUNCTION sentence RPAREN RPAREN
+    (6) sentence -> . LPAREN NOT LPAREN sentence DISJUNCTION sentence RPAREN RPAREN
+    (7) sentence -> . LPAREN NOT LPAREN NOT sentence RPAREN RPAREN
+    (8) sentence -> . LPAREN LPAREN sentence CONJUNCTION sentence RPAREN DISJUNCTION sentence RPAREN
+    (9) sentence -> . LPAREN sentence DISJUNCTION LPAREN sentence CONJUNCTION sentence RPAREN RPAREN
+    (10) sentence -> . LPAREN sentence RPAREN
+    (11) sentence -> . LPAREN sentence CONJUNCTION sentence RPAREN
+    (12) sentence -> . LPAREN sentence DISJUNCTION sentence RPAREN
+
+    NOT             shift and go to state 21
+    PREDICATE       shift and go to state 1
+    LPAREN          shift and go to state 3
+
+    sentence                       shift and go to state 20
+
+state 14
+
+    (12) sentence -> LPAREN sentence DISJUNCTION sentence . RPAREN
+
+    RPAREN          shift and go to state 22
+
+
+state 15
+
+    (9) sentence -> LPAREN sentence DISJUNCTION LPAREN . sentence CONJUNCTION sentence RPAREN RPAREN
+    (2) sentence -> LPAREN . NOT PREDICATE RPAREN
+    (3) sentence -> LPAREN . sentence IMPLIES sentence RPAREN
+    (4) sentence -> LPAREN . NOT LPAREN sentence RPAREN RPAREN
+    (5) sentence -> LPAREN . NOT LPAREN sentence CONJUNCTION sentence RPAREN RPAREN
+    (6) sentence -> LPAREN . NOT LPAREN sentence DISJUNCTION sentence RPAREN RPAREN
+    (7) sentence -> LPAREN . NOT LPAREN NOT sentence RPAREN RPAREN
+    (8) sentence -> LPAREN . LPAREN sentence CONJUNCTION sentence RPAREN DISJUNCTION sentence RPAREN
+    (9) sentence -> LPAREN . sentence DISJUNCTION LPAREN sentence CONJUNCTION sentence RPAREN RPAREN
+    (10) sentence -> LPAREN . sentence RPAREN
+    (11) sentence -> LPAREN . sentence CONJUNCTION sentence RPAREN
+    (12) sentence -> LPAREN . sentence DISJUNCTION sentence RPAREN
+    (1) sentence -> . PREDICATE
+    (2) sentence -> . LPAREN NOT PREDICATE RPAREN
+    (3) sentence -> . LPAREN sentence IMPLIES sentence RPAREN
+    (4) sentence -> . LPAREN NOT LPAREN sentence RPAREN RPAREN
+    (5) sentence -> . LPAREN NOT LPAREN sentence CONJUNCTION sentence RPAREN RPAREN
+    (6) sentence -> . LPAREN NOT LPAREN sentence DISJUNCTION sentence RPAREN RPAREN
+    (7) sentence -> . LPAREN NOT LPAREN NOT sentence RPAREN RPAREN
+    (8) sentence -> . LPAREN LPAREN sentence CONJUNCTION sentence RPAREN DISJUNCTION sentence RPAREN
+    (9) sentence -> . LPAREN sentence DISJUNCTION LPAREN sentence CONJUNCTION sentence RPAREN RPAREN
+    (10) sentence -> . LPAREN sentence RPAREN
+    (11) sentence -> . LPAREN sentence CONJUNCTION sentence RPAREN
+    (12) sentence -> . LPAREN sentence DISJUNCTION sentence RPAREN
+
+    NOT             shift and go to state 6
+    LPAREN          shift and go to state 5
+    PREDICATE       shift and go to state 1
+
+    sentence                       shift and go to state 23
+
+state 16
+
+    (3) sentence -> LPAREN sentence IMPLIES sentence . RPAREN
+
+    RPAREN          shift and go to state 24
+
+
+state 17
+
+    (11) sentence -> LPAREN sentence CONJUNCTION sentence . RPAREN
+
+    RPAREN          shift and go to state 25
+
+
+state 18
+
+    (8) sentence -> LPAREN LPAREN sentence CONJUNCTION . sentence RPAREN DISJUNCTION sentence RPAREN
+    (11) sentence -> LPAREN sentence CONJUNCTION . sentence RPAREN
+    (1) sentence -> . PREDICATE
+    (2) sentence -> . LPAREN NOT PREDICATE RPAREN
+    (3) sentence -> . LPAREN sentence IMPLIES sentence RPAREN
+    (4) sentence -> . LPAREN NOT LPAREN sentence RPAREN RPAREN
+    (5) sentence -> . LPAREN NOT LPAREN sentence CONJUNCTION sentence RPAREN RPAREN
+    (6) sentence -> . LPAREN NOT LPAREN sentence DISJUNCTION sentence RPAREN RPAREN
+    (7) sentence -> . LPAREN NOT LPAREN NOT sentence RPAREN RPAREN
+    (8) sentence -> . LPAREN LPAREN sentence CONJUNCTION sentence RPAREN DISJUNCTION sentence RPAREN
+    (9) sentence -> . LPAREN sentence DISJUNCTION LPAREN sentence CONJUNCTION sentence RPAREN RPAREN
+    (10) sentence -> . LPAREN sentence RPAREN
+    (11) sentence -> . LPAREN sentence CONJUNCTION sentence RPAREN
+    (12) sentence -> . LPAREN sentence DISJUNCTION sentence RPAREN
+
+    PREDICATE       shift and go to state 1
+    LPAREN          shift and go to state 3
+
+    sentence                       shift and go to state 26
+
+state 19
+
+    (2) sentence -> LPAREN NOT PREDICATE RPAREN .
+
+    RPAREN          reduce using rule 2 (sentence -> LPAREN NOT PREDICATE RPAREN .)
+    CONJUNCTION     reduce using rule 2 (sentence -> LPAREN NOT PREDICATE RPAREN .)
+    IMPLIES         reduce using rule 2 (sentence -> LPAREN NOT PREDICATE RPAREN .)
+    DISJUNCTION     reduce using rule 2 (sentence -> LPAREN NOT PREDICATE RPAREN .)
+    $end            reduce using rule 2 (sentence -> LPAREN NOT PREDICATE RPAREN .)
+
+
+state 20
+
+    (4) sentence -> LPAREN NOT LPAREN sentence . RPAREN RPAREN
+    (5) sentence -> LPAREN NOT LPAREN sentence . CONJUNCTION sentence RPAREN RPAREN
+    (6) sentence -> LPAREN NOT LPAREN sentence . DISJUNCTION sentence RPAREN RPAREN
+
+    RPAREN          shift and go to state 28
+    CONJUNCTION     shift and go to state 27
+    DISJUNCTION     shift and go to state 29
+
+
+state 21
+
+    (7) sentence -> LPAREN NOT LPAREN NOT . sentence RPAREN RPAREN
+    (1) sentence -> . PREDICATE
+    (2) sentence -> . LPAREN NOT PREDICATE RPAREN
+    (3) sentence -> . LPAREN sentence IMPLIES sentence RPAREN
+    (4) sentence -> . LPAREN NOT LPAREN sentence RPAREN RPAREN
+    (5) sentence -> . LPAREN NOT LPAREN sentence CONJUNCTION sentence RPAREN RPAREN
+    (6) sentence -> . LPAREN NOT LPAREN sentence DISJUNCTION sentence RPAREN RPAREN
+    (7) sentence -> . LPAREN NOT LPAREN NOT sentence RPAREN RPAREN
+    (8) sentence -> . LPAREN LPAREN sentence CONJUNCTION sentence RPAREN DISJUNCTION sentence RPAREN
+    (9) sentence -> . LPAREN sentence DISJUNCTION LPAREN sentence CONJUNCTION sentence RPAREN RPAREN
+    (10) sentence -> . LPAREN sentence RPAREN
+    (11) sentence -> . LPAREN sentence CONJUNCTION sentence RPAREN
+    (12) sentence -> . LPAREN sentence DISJUNCTION sentence RPAREN
+
+    PREDICATE       shift and go to state 1
+    LPAREN          shift and go to state 3
+
+    sentence                       shift and go to state 30
+
+state 22
+
+    (12) sentence -> LPAREN sentence DISJUNCTION sentence RPAREN .
+
+    RPAREN          reduce using rule 12 (sentence -> LPAREN sentence DISJUNCTION sentence RPAREN .)
+    CONJUNCTION     reduce using rule 12 (sentence -> LPAREN sentence DISJUNCTION sentence RPAREN .)
+    IMPLIES         reduce using rule 12 (sentence -> LPAREN sentence DISJUNCTION sentence RPAREN .)
+    DISJUNCTION     reduce using rule 12 (sentence -> LPAREN sentence DISJUNCTION sentence RPAREN .)
+    $end            reduce using rule 12 (sentence -> LPAREN sentence DISJUNCTION sentence RPAREN .)
+
+
+state 23
+
+    (9) sentence -> LPAREN sentence DISJUNCTION LPAREN sentence . CONJUNCTION sentence RPAREN RPAREN
+    (3) sentence -> LPAREN sentence . IMPLIES sentence RPAREN
+    (9) sentence -> LPAREN sentence . DISJUNCTION LPAREN sentence CONJUNCTION sentence RPAREN RPAREN
+    (10) sentence -> LPAREN sentence . RPAREN
+    (11) sentence -> LPAREN sentence . CONJUNCTION sentence RPAREN
+    (12) sentence -> LPAREN sentence . DISJUNCTION sentence RPAREN
+
+    CONJUNCTION     shift and go to state 31
+    IMPLIES         shift and go to state 9
+    DISJUNCTION     shift and go to state 7
+    RPAREN          shift and go to state 8
+
+
+state 24
+
+    (3) sentence -> LPAREN sentence IMPLIES sentence RPAREN .
+
+    RPAREN          reduce using rule 3 (sentence -> LPAREN sentence IMPLIES sentence RPAREN .)
+    CONJUNCTION     reduce using rule 3 (sentence -> LPAREN sentence IMPLIES sentence RPAREN .)
+    IMPLIES         reduce using rule 3 (sentence -> LPAREN sentence IMPLIES sentence RPAREN .)
+    DISJUNCTION     reduce using rule 3 (sentence -> LPAREN sentence IMPLIES sentence RPAREN .)
+    $end            reduce using rule 3 (sentence -> LPAREN sentence IMPLIES sentence RPAREN .)
+
+
+state 25
+
+    (11) sentence -> LPAREN sentence CONJUNCTION sentence RPAREN .
+
+    RPAREN          reduce using rule 11 (sentence -> LPAREN sentence CONJUNCTION sentence RPAREN .)
+    $end            reduce using rule 11 (sentence -> LPAREN sentence CONJUNCTION sentence RPAREN .)
+    CONJUNCTION     reduce using rule 11 (sentence -> LPAREN sentence CONJUNCTION sentence RPAREN .)
+    DISJUNCTION     reduce using rule 11 (sentence -> LPAREN sentence CONJUNCTION sentence RPAREN .)
+
+
+state 26
+
+    (8) sentence -> LPAREN LPAREN sentence CONJUNCTION sentence . RPAREN DISJUNCTION sentence RPAREN
+    (11) sentence -> LPAREN sentence CONJUNCTION sentence . RPAREN
+
+    RPAREN          shift and go to state 32
+
+
+state 27
+
+    (5) sentence -> LPAREN NOT LPAREN sentence CONJUNCTION . sentence RPAREN RPAREN
+    (1) sentence -> . PREDICATE
+    (2) sentence -> . LPAREN NOT PREDICATE RPAREN
+    (3) sentence -> . LPAREN sentence IMPLIES sentence RPAREN
+    (4) sentence -> . LPAREN NOT LPAREN sentence RPAREN RPAREN
+    (5) sentence -> . LPAREN NOT LPAREN sentence CONJUNCTION sentence RPAREN RPAREN
+    (6) sentence -> . LPAREN NOT LPAREN sentence DISJUNCTION sentence RPAREN RPAREN
+    (7) sentence -> . LPAREN NOT LPAREN NOT sentence RPAREN RPAREN
+    (8) sentence -> . LPAREN LPAREN sentence CONJUNCTION sentence RPAREN DISJUNCTION sentence RPAREN
+    (9) sentence -> . LPAREN sentence DISJUNCTION LPAREN sentence CONJUNCTION sentence RPAREN RPAREN
+    (10) sentence -> . LPAREN sentence RPAREN
+    (11) sentence -> . LPAREN sentence CONJUNCTION sentence RPAREN
+    (12) sentence -> . LPAREN sentence DISJUNCTION sentence RPAREN
+
+    PREDICATE       shift and go to state 1
+    LPAREN          shift and go to state 3
+
+    sentence                       shift and go to state 33
+
+state 28
+
+    (4) sentence -> LPAREN NOT LPAREN sentence RPAREN . RPAREN
+
+    RPAREN          shift and go to state 34
+
+
+state 29
+
+    (6) sentence -> LPAREN NOT LPAREN sentence DISJUNCTION . sentence RPAREN RPAREN
+    (1) sentence -> . PREDICATE
+    (2) sentence -> . LPAREN NOT PREDICATE RPAREN
+    (3) sentence -> . LPAREN sentence IMPLIES sentence RPAREN
+    (4) sentence -> . LPAREN NOT LPAREN sentence RPAREN RPAREN
+    (5) sentence -> . LPAREN NOT LPAREN sentence CONJUNCTION sentence RPAREN RPAREN
+    (6) sentence -> . LPAREN NOT LPAREN sentence DISJUNCTION sentence RPAREN RPAREN
+    (7) sentence -> . LPAREN NOT LPAREN NOT sentence RPAREN RPAREN
+    (8) sentence -> . LPAREN LPAREN sentence CONJUNCTION sentence RPAREN DISJUNCTION sentence RPAREN
+    (9) sentence -> . LPAREN sentence DISJUNCTION LPAREN sentence CONJUNCTION sentence RPAREN RPAREN
+    (10) sentence -> . LPAREN sentence RPAREN
+    (11) sentence -> . LPAREN sentence CONJUNCTION sentence RPAREN
+    (12) sentence -> . LPAREN sentence DISJUNCTION sentence RPAREN
+
+    PREDICATE       shift and go to state 1
+    LPAREN          shift and go to state 3
+
+    sentence                       shift and go to state 35
+
+state 30
+
+    (7) sentence -> LPAREN NOT LPAREN NOT sentence . RPAREN RPAREN
+
+    RPAREN          shift and go to state 36
+
+
+state 31
+
+    (9) sentence -> LPAREN sentence DISJUNCTION LPAREN sentence CONJUNCTION . sentence RPAREN RPAREN
+    (11) sentence -> LPAREN sentence CONJUNCTION . sentence RPAREN
+    (1) sentence -> . PREDICATE
+    (2) sentence -> . LPAREN NOT PREDICATE RPAREN
+    (3) sentence -> . LPAREN sentence IMPLIES sentence RPAREN
+    (4) sentence -> . LPAREN NOT LPAREN sentence RPAREN RPAREN
+    (5) sentence -> . LPAREN NOT LPAREN sentence CONJUNCTION sentence RPAREN RPAREN
+    (6) sentence -> . LPAREN NOT LPAREN sentence DISJUNCTION sentence RPAREN RPAREN
+    (7) sentence -> . LPAREN NOT LPAREN NOT sentence RPAREN RPAREN
+    (8) sentence -> . LPAREN LPAREN sentence CONJUNCTION sentence RPAREN DISJUNCTION sentence RPAREN
+    (9) sentence -> . LPAREN sentence DISJUNCTION LPAREN sentence CONJUNCTION sentence RPAREN RPAREN
+    (10) sentence -> . LPAREN sentence RPAREN
+    (11) sentence -> . LPAREN sentence CONJUNCTION sentence RPAREN
+    (12) sentence -> . LPAREN sentence DISJUNCTION sentence RPAREN
+
+    PREDICATE       shift and go to state 1
+    LPAREN          shift and go to state 3
+
+    sentence                       shift and go to state 37
+
+state 32
+
+    (8) sentence -> LPAREN LPAREN sentence CONJUNCTION sentence RPAREN . DISJUNCTION sentence RPAREN
+    (11) sentence -> LPAREN sentence CONJUNCTION sentence RPAREN .
+
+  ! shift/reduce conflict for DISJUNCTION resolved as shift
+    DISJUNCTION     shift and go to state 38
+    CONJUNCTION     reduce using rule 11 (sentence -> LPAREN sentence CONJUNCTION sentence RPAREN .)
+    IMPLIES         reduce using rule 11 (sentence -> LPAREN sentence CONJUNCTION sentence RPAREN .)
+    RPAREN          reduce using rule 11 (sentence -> LPAREN sentence CONJUNCTION sentence RPAREN .)
+
+  ! DISJUNCTION     [ reduce using rule 11 (sentence -> LPAREN sentence CONJUNCTION sentence RPAREN .) ]
+
+
+state 33
+
+    (5) sentence -> LPAREN NOT LPAREN sentence CONJUNCTION sentence . RPAREN RPAREN
+
+    RPAREN          shift and go to state 39
+
+
+state 34
+
+    (4) sentence -> LPAREN NOT LPAREN sentence RPAREN RPAREN .
+
+    RPAREN          reduce using rule 4 (sentence -> LPAREN NOT LPAREN sentence RPAREN RPAREN .)
+    CONJUNCTION     reduce using rule 4 (sentence -> LPAREN NOT LPAREN sentence RPAREN RPAREN .)
+    IMPLIES         reduce using rule 4 (sentence -> LPAREN NOT LPAREN sentence RPAREN RPAREN .)
+    DISJUNCTION     reduce using rule 4 (sentence -> LPAREN NOT LPAREN sentence RPAREN RPAREN .)
+    $end            reduce using rule 4 (sentence -> LPAREN NOT LPAREN sentence RPAREN RPAREN .)
+
+
+state 35
+
+    (6) sentence -> LPAREN NOT LPAREN sentence DISJUNCTION sentence . RPAREN RPAREN
+
+    RPAREN          shift and go to state 40
+
+
+state 36
+
+    (7) sentence -> LPAREN NOT LPAREN NOT sentence RPAREN . RPAREN
+
+    RPAREN          shift and go to state 41
+
+
+state 37
+
+    (9) sentence -> LPAREN sentence DISJUNCTION LPAREN sentence CONJUNCTION sentence . RPAREN RPAREN
+    (11) sentence -> LPAREN sentence CONJUNCTION sentence . RPAREN
+
+    RPAREN          shift and go to state 42
+
+
+state 38
+
+    (8) sentence -> LPAREN LPAREN sentence CONJUNCTION sentence RPAREN DISJUNCTION . sentence RPAREN
+    (1) sentence -> . PREDICATE
+    (2) sentence -> . LPAREN NOT PREDICATE RPAREN
+    (3) sentence -> . LPAREN sentence IMPLIES sentence RPAREN
+    (4) sentence -> . LPAREN NOT LPAREN sentence RPAREN RPAREN
+    (5) sentence -> . LPAREN NOT LPAREN sentence CONJUNCTION sentence RPAREN RPAREN
+    (6) sentence -> . LPAREN NOT LPAREN sentence DISJUNCTION sentence RPAREN RPAREN
+    (7) sentence -> . LPAREN NOT LPAREN NOT sentence RPAREN RPAREN
+    (8) sentence -> . LPAREN LPAREN sentence CONJUNCTION sentence RPAREN DISJUNCTION sentence RPAREN
+    (9) sentence -> . LPAREN sentence DISJUNCTION LPAREN sentence CONJUNCTION sentence RPAREN RPAREN
+    (10) sentence -> . LPAREN sentence RPAREN
+    (11) sentence -> . LPAREN sentence CONJUNCTION sentence RPAREN
+    (12) sentence -> . LPAREN sentence DISJUNCTION sentence RPAREN
+
+    PREDICATE       shift and go to state 1
+    LPAREN          shift and go to state 3
+
+    sentence                       shift and go to state 43
+
+state 39
+
+    (5) sentence -> LPAREN NOT LPAREN sentence CONJUNCTION sentence RPAREN . RPAREN
+
+    RPAREN          shift and go to state 44
+
+
+state 40
+
+    (6) sentence -> LPAREN NOT LPAREN sentence DISJUNCTION sentence RPAREN . RPAREN
+
+    RPAREN          shift and go to state 45
+
+
+state 41
+
+    (7) sentence -> LPAREN NOT LPAREN NOT sentence RPAREN RPAREN .
+
+    RPAREN          reduce using rule 7 (sentence -> LPAREN NOT LPAREN NOT sentence RPAREN RPAREN .)
+    CONJUNCTION     reduce using rule 7 (sentence -> LPAREN NOT LPAREN NOT sentence RPAREN RPAREN .)
+    IMPLIES         reduce using rule 7 (sentence -> LPAREN NOT LPAREN NOT sentence RPAREN RPAREN .)
+    DISJUNCTION     reduce using rule 7 (sentence -> LPAREN NOT LPAREN NOT sentence RPAREN RPAREN .)
+    $end            reduce using rule 7 (sentence -> LPAREN NOT LPAREN NOT sentence RPAREN RPAREN .)
+
+
+state 42
+
+    (9) sentence -> LPAREN sentence DISJUNCTION LPAREN sentence CONJUNCTION sentence RPAREN . RPAREN
+    (11) sentence -> LPAREN sentence CONJUNCTION sentence RPAREN .
+
+  ! shift/reduce conflict for RPAREN resolved as shift
+    RPAREN          shift and go to state 46
+
+  ! RPAREN          [ reduce using rule 11 (sentence -> LPAREN sentence CONJUNCTION sentence RPAREN .) ]
+
+
+state 43
+
+    (8) sentence -> LPAREN LPAREN sentence CONJUNCTION sentence RPAREN DISJUNCTION sentence . RPAREN
+
+    RPAREN          shift and go to state 47
+
+
+state 44
+
+    (5) sentence -> LPAREN NOT LPAREN sentence CONJUNCTION sentence RPAREN RPAREN .
+
+    RPAREN          reduce using rule 5 (sentence -> LPAREN NOT LPAREN sentence CONJUNCTION sentence RPAREN RPAREN .)
+    CONJUNCTION     reduce using rule 5 (sentence -> LPAREN NOT LPAREN sentence CONJUNCTION sentence RPAREN RPAREN .)
+    IMPLIES         reduce using rule 5 (sentence -> LPAREN NOT LPAREN sentence CONJUNCTION sentence RPAREN RPAREN .)
+    DISJUNCTION     reduce using rule 5 (sentence -> LPAREN NOT LPAREN sentence CONJUNCTION sentence RPAREN RPAREN .)
+    $end            reduce using rule 5 (sentence -> LPAREN NOT LPAREN sentence CONJUNCTION sentence RPAREN RPAREN .)
+
+
+state 45
+
+    (6) sentence -> LPAREN NOT LPAREN sentence DISJUNCTION sentence RPAREN RPAREN .
+
+    RPAREN          reduce using rule 6 (sentence -> LPAREN NOT LPAREN sentence DISJUNCTION sentence RPAREN RPAREN .)
+    CONJUNCTION     reduce using rule 6 (sentence -> LPAREN NOT LPAREN sentence DISJUNCTION sentence RPAREN RPAREN .)
+    IMPLIES         reduce using rule 6 (sentence -> LPAREN NOT LPAREN sentence DISJUNCTION sentence RPAREN RPAREN .)
+    DISJUNCTION     reduce using rule 6 (sentence -> LPAREN NOT LPAREN sentence DISJUNCTION sentence RPAREN RPAREN .)
+    $end            reduce using rule 6 (sentence -> LPAREN NOT LPAREN sentence DISJUNCTION sentence RPAREN RPAREN .)
+
+
+state 46
+
+    (9) sentence -> LPAREN sentence DISJUNCTION LPAREN sentence CONJUNCTION sentence RPAREN RPAREN .
+
+    RPAREN          reduce using rule 9 (sentence -> LPAREN sentence DISJUNCTION LPAREN sentence CONJUNCTION sentence RPAREN RPAREN .)
+    CONJUNCTION     reduce using rule 9 (sentence -> LPAREN sentence DISJUNCTION LPAREN sentence CONJUNCTION sentence RPAREN RPAREN .)
+    IMPLIES         reduce using rule 9 (sentence -> LPAREN sentence DISJUNCTION LPAREN sentence CONJUNCTION sentence RPAREN RPAREN .)
+    DISJUNCTION     reduce using rule 9 (sentence -> LPAREN sentence DISJUNCTION LPAREN sentence CONJUNCTION sentence RPAREN RPAREN .)
+    $end            reduce using rule 9 (sentence -> LPAREN sentence DISJUNCTION LPAREN sentence CONJUNCTION sentence RPAREN RPAREN .)
+
+
+state 47
+
+    (8) sentence -> LPAREN LPAREN sentence CONJUNCTION sentence RPAREN DISJUNCTION sentence RPAREN .
+
+    RPAREN          reduce using rule 8 (sentence -> LPAREN LPAREN sentence CONJUNCTION sentence RPAREN DISJUNCTION sentence RPAREN .)
+    CONJUNCTION     reduce using rule 8 (sentence -> LPAREN LPAREN sentence CONJUNCTION sentence RPAREN DISJUNCTION sentence RPAREN .)
+    IMPLIES         reduce using rule 8 (sentence -> LPAREN LPAREN sentence CONJUNCTION sentence RPAREN DISJUNCTION sentence RPAREN .)
+    DISJUNCTION     reduce using rule 8 (sentence -> LPAREN LPAREN sentence CONJUNCTION sentence RPAREN DISJUNCTION sentence RPAREN .)
+    $end            reduce using rule 8 (sentence -> LPAREN LPAREN sentence CONJUNCTION sentence RPAREN DISJUNCTION sentence RPAREN .)
+
+WARNING: 
+WARNING: Conflicts:
+WARNING: 
+WARNING: shift/reduce conflict for DISJUNCTION in state 32 resolved as shift
+WARNING: shift/reduce conflict for RPAREN in state 42 resolved as shift
